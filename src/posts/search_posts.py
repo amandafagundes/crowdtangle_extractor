@@ -16,12 +16,13 @@ def search_posts(query, start_date, end_date, next_page, count='10', language='p
                    '&endDate=' + end_date + '&language=' + language + \
                    '&includeHistory=' + history + '&includeSummary=' + summary + \
                    '&minInteractions=' + min_interactions + '&platforms=' + platforms + \
-                    '&count=' + count
+                   '&count=' + count + "&searchField=text_fields_only"
+    print('*', request_url)
 
     r = requests.get(request_url)
+    print('2')
     if r.status_code > 300:
         raise Exception(r.text)
-    
     return r.json()
 
 def search_post_by_id(id, history='false'):

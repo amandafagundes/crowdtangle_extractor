@@ -35,8 +35,8 @@ def format_post(nested_json):
     flatten(nested_json)
     return out
 
-def get_file_name(query, start_date, end_date, custom_path='data/bias'):
-    query = query.replace(' ', '_')
+def get_file_name(query, start_date, end_date, custom_path='data/hashtags'):
+    query = query.replace(' ', '_').replace(f'%23', '#')
     json_path = f'{custom_path}/{query}/{query}'
     os.makedirs(os.path.dirname(json_path), exist_ok=True)
 
